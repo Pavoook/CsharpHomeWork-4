@@ -8,12 +8,12 @@ int GetSize(string msg)
 {
     Console.WriteLine(msg);
     int number = int.Parse(Console.ReadLine());
-    if (number > 0) return number;
-    else 
+    while (number <= 0)
     {
-        Console.WriteLine("Неверное значение.");
-        return 1;
+        Console.WriteLine("Неверное значение. Введите целое число больше нуля:");
+        number = int.Parse(Console.ReadLine());
     }
+    return number;
 }
 
 int GetBound(string msg)
@@ -21,12 +21,6 @@ int GetBound(string msg)
     Console.WriteLine(msg);
     int number = int.Parse(Console.ReadLine());
     return number;
-}
-
-bool ValidNumber(int value)
-{
-    if (value < 0) return false;
-    return true;
 }
 
 int[] FillArray(int[] array, int min, int max)
@@ -48,6 +42,5 @@ void PrintArray(int[] array)
     Console.Write($"{array[array.Length - 1]}]");
 }
 
-int size = GetSize("Введите размер массива:");
-int[] random = new int[size];
-if (ValidNumber(size)) PrintArray(FillArray(random, GetBound("Введите минимальное значение элемента массива:"), GetBound("Введите максимальное значение элемента массива:")));
+int[] random = new int[GetSize("Введите размер массива:")];
+PrintArray(FillArray(random, GetBound("Введите минимальное значение элемента массива:"), GetBound("Введите максимальное значение элемента массива:")));
